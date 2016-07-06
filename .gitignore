@@ -2,3 +2,4 @@
 *.lock
 .phpcd/
 vendor/
+__pycache__/
