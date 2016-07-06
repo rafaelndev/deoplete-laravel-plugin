@@ -1,0 +1,6 @@
+{
+    "require": {
+        "hanneskod/classtools": "~1.0",
+        "roave/better-reflection": "^1.0"
+    }
+}
