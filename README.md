@@ -13,10 +13,10 @@ Use your plugin manager of choice.
   - Add `NeoBundle 'https://github.com/rafaelndev/deoplete-laravel-plugin'` to .vimrc
   - Run `:NeoBundleInstall`
 - [vim-plug](https://github.com/junegunn/vim-plug)
-  - Add `Plug 'rafaelndev/deoplete-laravel-plugin', {'for': ['php'], 'do': 'composer install -d route-parser'}` to .vimrc
+  - Add `Plug 'rafaelndev/deoplete-laravel-plugin', {'for': ['php'], 'do': 'composer install'}` to .vimrc
   - Run `:PlugInstall`
 
-Run composer install inside route-parser folder
+You need to run composer install to install necessary php packages.
 
 ## Todo
 

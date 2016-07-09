@@ -7,7 +7,7 @@ function! laravel_plugin#getRoutes(findstart, base) abort
     " if empty(a:base)
     "   return []
     " endif
-    let l:routes = system("php " . s:plugindir . "/route-parser/main.php" . " " . getcwd() . " " . shellescape(a:base))
+    let l:routes = system("php " . s:plugindir . "/laravel/main.php" . " " . getcwd() . " " . shellescape(a:base))
     let l:route_split = split(l:routes,'\n')
 
     for l:route in l:route_split

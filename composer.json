@@ -1,0 +1,10 @@
+{
+    "require": {
+        "hanneskod/classtools": "~1.0",
+        "psr/log": "^1.0",
+        "monolog/monolog": "^1.20"
+    },
+    "autoload": {
+      "psr-4": {"Laravel\\": "laravel/"}
+    }
+}
