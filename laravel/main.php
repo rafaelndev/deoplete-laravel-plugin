@@ -9,10 +9,12 @@ $loader = require __DIR__ . '/../vendor/autoload.php';
 use Laravel\RouteFilter;
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
+use Monolog\Formatter\LineFormatter;
 
 $log_path = getenv('HOME') . '/laravel-deoplete.log';
 $logger = new Logger('Laravel');
-$logger->pushHandler(new StreamHandler($log_path, Logger::DEBUG));
+$stream = new StreamHandler($log_path, Logger::DEBUG);
+$logger->pushHandler($stream);
 
 try {
     $root   = $argv[1];
@@ -25,15 +27,12 @@ try {
         throw new \Exception('Arquivo composer.json não foi encontrado');
     }
 
-    $routeFilter = new RouteFilter($root, $base);
-    $routeList = $routeFilter->getRouteList();
+    $routeFilter = new RouteFilter($root, $logger);
+    $routeList = $routeFilter->getRoutes($base);
+    echo $routeList;
 
-    // Envia a lista de rotas por string ao VIM/deoplete
-    foreach ($routeList as $route) {
-        echo $route;
-    }
 } catch (\Exception $e) {
-    $logger->error($e->getMessage(), $e->getTrace());
+    $logger->error("Mensagem: " . $e->getMessage() . " Linha: " . $e->getLine() );
 } catch (\Throwable $e){
-    $logger->error($e->getMessage(), $e->getTrace());
+    $logger->error("Mensagem: " . $e->getMessage() . " Linha: " . $e->getLine() );
 }
