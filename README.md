@@ -1,5 +1,7 @@
 # Deoplete Laravel Plugin
 
+Autocompletion for Laravel Routes and Views in Vim, for neovim-deoplete.
+
 ## Installation
 
 Use your plugin manager of choice.
