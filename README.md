@@ -1,26 +1,45 @@
 # Deoplete Laravel Plugin
 
+## Introduction
+
 Autocompletion for Laravel Routes and Views in Vim, for neovim-deoplete.
 
-## Installation
+## Features
 
-Use your plugin manager of choice.
+- Autocomplete Laravel Routes based on controllers public methods.
+    - Works on following commands:
+      - `Route:get, post, delete, put, patch, options('...')`
+      - Blade `action('...')`
+      - Route `'uses' => '...'`
+- Autocomplete Laravel Blade Views.
+    - Works on following commands:
+      - view('...')
+      - @extends('...')
+      - @include('...')
+      - @each('...')
+- Cache for faster completion (Alpha).
 
-- [Pathogen](https://github.com/tpope/vim-pathogen)
-  - `git clone https://github.com/rafaelndev/deoplete-laravel-plugin ~/.vim/bundle/deoplete-laravel-plugin`
-- [Vundle](https://github.com/gmarik/vundle)
-  - Add `Bundle 'https://github.com/rafaelndev/deoplete-laravel-plugin'` to .vimrc
-  - Run `:BundleInstall`
-- [NeoBundle](https://github.com/Shougo/neobundle.vim)
-  - Add `NeoBundle 'https://github.com/rafaelndev/deoplete-laravel-plugin'` to .vimrc
-  - Run `:NeoBundleInstall`
+## Installation and usage
+
+### Requeriments
+- PHP 5.4+
+- Composer
+- Python 2/3
+- Neovim / Deoplete Plugin
+- A Laravel Project (tested on 5.1+)
+
+### Installation
+
+You can use your plugin manager of choice, but we recommend [Vim-Plug](https://github.com/junegunn/vim-plug/)
 - [vim-plug](https://github.com/junegunn/vim-plug)
   - Add `Plug 'rafaelndev/deoplete-laravel-plugin', {'for': ['php'], 'do': 'composer install'}` to .vimrc
   - Run `:PlugInstall`
 
-You need to run composer install to install necessary php packages.
+### Usage
+If your system meet all requirements, it should works automatically when typing the supported functions (see Features).
 
-## Todo
-
-1. Write a plugin
-2. Write documentation
+## TODO
+- [ ] Section completion.
+- [ ] Support for common vim (omnifunc).
+- [ ] PHP Server to receive and send info to vim/neovim (possibly using ReactPHP HTTP or Sockets).
+- [ ] Better cache mechanics.
