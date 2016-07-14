@@ -13,10 +13,10 @@ Autocompletion for Laravel Routes and Views in Vim, for neovim-deoplete.
       - Route `'uses' => '...'`
 - Autocomplete Laravel Blade Views.
     - Works on following commands:
-      - view('...')
-      - @extends('...')
-      - @include('...')
-      - @each('...')
+      - `view('...')`
+      - `@extends('...')`
+      - `@include('...')`
+      - `@each('...')`
 - Cache for faster completion (Alpha).
 
 ## Installation and usage
