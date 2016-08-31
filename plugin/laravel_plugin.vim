@@ -22,27 +22,31 @@ endfunction
 function! laravel_plugin#getCachedRoutes() abort
 python << endpython
 import vim, json, os.path, time
-from pprint import pprint
 os.stat_float_times(False)
 
 use_cache = True
 
-with open('deoplete-laravel.cache') as data_file:
-  data = json.load(data_file)
+cache_file = 'deoplete-laravel.cache'
 
-  classes = data[0]['classes']
-  for file_class in classes:
-    if file_class['date'] != os.path.getmtime(file_class['file']):
-      use_cache = False
+if os.path.isfile(cache_file):
+  with open(cache_file) as data_file:
+    data = json.load(data_file)
 
-if use_cache:
-  vim.command("let l:use_cache = 1")
-  routes = ""
-  for route in data[0]['routes']:
-    routes += route
-  vim.command("let l:routes = '%s'"% routes)
+    classes = data[0]['classes']
+    for file_class in classes:
+      if file_class['date'] != os.path.getmtime(file_class['file']):
+        use_cache = False
+
+  if use_cache:
+    vim.command("let l:use_cache = 1")
+    routes = ""
+    for route in data[0]['routes']:
+      routes += route
+    vim.command("let l:routes = '%s'"% routes)
+  else:
+    vim.command("let l:use_cache = 0")
 else:
-  vim.command("let l:use_cache = 0")
+    vim.command("let l:use_cache = 0")
 endpython
 
 if l:use_cache
