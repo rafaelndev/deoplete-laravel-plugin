@@ -9,7 +9,7 @@ class Source(Base):
         self.debug_enabled = True
         self.name = 'laravel-plugin'
         self.mark = '[Route]'
-        self.filetypes = ['php']
+        self.filetypes = ['php', 'blade']
         self.is_bytepos = True
         self.rank = 500
         self.input_pattern = r'\w*'
