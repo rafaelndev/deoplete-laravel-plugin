@@ -1,6 +1,8 @@
 from .base import Base
 
 import re
+import json
+import os
 
 class Source(Base):
     def __init__(self, vim):
@@ -19,6 +21,16 @@ class Source(Base):
         return m.start() if m else -1
 
     def gather_candidates(self, context):
+        # If the composer file is not found, ignore
+        if os.path.isfile('composer.json'):
+            with open('composer.json') as data_file:
+                data = json.load(data_file)
+                # If the project is not laravel, ignore
+                if 'laravel/framework' not in data['require']:
+                    return []
+        else:
+            return []
+
         if self.check_route(context['input']):
             return self.vim.call('laravel_plugin#getRoutes', context['input'], context['complete_str'])
         else:
