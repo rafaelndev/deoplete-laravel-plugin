@@ -1,3 +1,6 @@
+# **DEPRECATED**
+I don't use deoplete/php/laravel anymore, so this plugin is deprecated and probabily don't work anymore.
+
 # Deoplete Laravel Plugin
 
 ## Introduction
